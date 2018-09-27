@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'screens/news_list.dart';
 
+import 'blocs/stories_provider.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: NewsList(),
+    return StoriesProvider(
+      child: MaterialApp(
+        title: 'News!',
+        home: NewsList(),
+      ),
     );
   }
 }
