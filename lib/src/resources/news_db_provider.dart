@@ -68,8 +68,19 @@ class NewsDbProvider implements Source, Cache{
   // we didn't put async/await because we are not
   // interested in retrieving the value immediately
   Future<int> addItem(ItemModel item){
-    return db.insert("Item", item.toMapForDb());
+    return db.insert(
+        "Items",
+        item.toMapForDb(),
+        conflictAlgorithm: ConflictAlgorithm.ignore,
+    );
   }
+
+
+  Future<int> clearDbTable(){
+    return db.delete("Items");
+  }
+
+
 }
 
 final newsDbProvider = NewsDbProvider();

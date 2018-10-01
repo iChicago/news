@@ -20,18 +20,18 @@ class ItemModel {
 
   ItemModel.fromJson(Map<String, dynamic> jsonItem)
       : id = jsonItem['id'],
-        deleted = jsonItem['deleted'],
+        deleted = jsonItem['deleted'] ?? false,
         type = jsonItem['type'],
         by = jsonItem['by'],
         time = jsonItem['time'],
-        text = jsonItem['text'],
-        dead = jsonItem['dead'],
+        text = jsonItem['text'] ?? '',
+        dead = jsonItem['dead'] ?? false,
         parent = jsonItem['parent'],
-        kids = jsonItem['kids'],
+        kids = jsonItem['kids'] ?? [],
         url = jsonItem['url'],
         score = jsonItem['score'],
         title = jsonItem['title'],
-        descendants = jsonItem['descendants'];
+        descendants = jsonItem['descendants'] ?? 0;
 
   // 1 == 1 => true
   ItemModel.fromDb(Map<String, dynamic> dbItem)
